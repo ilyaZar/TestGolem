@@ -6,4 +6,6 @@
 #' @noRd
 app_server <- function(input, output, session) {
   # Your application server logic
+  data <- shiny::reactiveVal({mtcars})
+  mod_outer_module_server("outer_module")
 }

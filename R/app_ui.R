@@ -11,6 +11,10 @@ app_ui <- function(request) {
     # Your application UI logic
     fluidPage(
       h1("TestGolem")
+    ),
+    navbarPage(
+      title = "demo",
+      tabPanel("Outer Module", mod_outer_module_ui("outer_module"))
     )
   )
 }
