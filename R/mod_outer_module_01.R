@@ -20,17 +20,17 @@ mod_outer_module_ui <- function(id) {
 #' outer_module Server Functions
 #'
 #' @noRd
-mod_outer_module_server <- function(id){
+mod_outer_module_server <- function(id, global){
   moduleServer(id, function(input, output, session) {
-    data <- reactive({
+    observe({
       req(input$file)
-      read.csv(input$file$datapath, header = TRUE)
+      global$Data <- read.csv(input$file$datapath, header = TRUE)
     })
 
     output$contents <- renderTable({
-      data()
+      global$Data
     })
-    mod_inner_module_server("inner_module", uploadedData = data())
+    mod_inner_module_server("inner_module",  global$Data, global = global)
   })
 }
 
