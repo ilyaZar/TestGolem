@@ -22,7 +22,7 @@ mod_inner_module_ui <- function(id) {
 #' out_module Server Functions
 #'
 #' @noRd
-mod_inner_module_server <- function(id){
+mod_inner_module_server <- function(id, uploadedData){
   moduleServer(id, function(input, output, session) {
     observeEvent(uploadedData, {
       updateSelectInput(session = session,
